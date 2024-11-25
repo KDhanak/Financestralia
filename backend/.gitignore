@@ -1,0 +1,38 @@
+# .NET build output
+bin/
+obj/
+
+# User-specific files
+*.user
+*.userosscache
+*.suo
+*.userprefs
+
+# Build and publish directories
+publish/
+artifacts/
+
+# NuGet
+.nuget/
+packages/
+
+# IDEs
+.vs/
+.idea/
+.vscode/
+
+# macOS
+.DS_Store
+
+# Secrets and environment variables
+appsettings.Development.json
+secrets/
+
+# Log files
+*.log
+
+# Temporary files
+#*  
+*.bak
+*.swp
+*.swo
