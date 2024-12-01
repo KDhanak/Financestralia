@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import logo from '../../public/logo.png';
 import { FaArrowUp, FaArrowDown  } from "react-icons/fa6";
+import logo from '../../../public/logo.png'
 
 const Navbar = () => {
     const [servicesDropDown, setservicesDropDown] = useState(false);
