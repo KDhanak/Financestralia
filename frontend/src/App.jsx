@@ -1,5 +1,6 @@
 import './App.css'
 import { Helmet } from 'react-helmet-async';
+import Home from './components/Home/Home';
 
 function App() {
 
@@ -9,6 +10,7 @@ function App() {
 				<title>Financestralia</title>
 				<meta name="description" content="home" />
 			</Helmet>
+			<Home />
 		</>
 	)
 };
