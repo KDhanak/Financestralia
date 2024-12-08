@@ -1,5 +1,5 @@
 import './App.css'
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from 'react-helmet';
 import Home from './components/Home/Home';
 
 function App() {

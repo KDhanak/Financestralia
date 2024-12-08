@@ -3,15 +3,15 @@ import { FaArrowUp, FaArrowDown  } from "react-icons/fa6";
 import logo from '../../../public/logo.png'
 
 const Navbar = () => {
-    const [servicesDropDown, setservicesDropDown] = useState(false);
-    const [solutionsDropDown, setsolutionsDropDown] = useState(false);
+    const [servicesDropDown, setServicesDropDown] = useState(false);
+    const [solutionsDropDown, setSolutionsDropDown] = useState(false);
 
     const handleServicesDropDown = () => {
-        setservicesDropDown(!servicesDropDown);
+        setServicesDropDown(!servicesDropDown);
     }
 
     const handleSolutionsDropDown = () => {
-        setsolutionsDropDown(!solutionsDropDown);
+        setSolutionsDropDown(!solutionsDropDown);
     }
     return (
         <>
@@ -26,7 +26,7 @@ const Navbar = () => {
                             <span>Services</span>
                             {(servicesDropDown) ? <FaArrowDown /> : <FaArrowUp />}
                         </li>
-                        <li className="cursor-pointer hover:text-primary_2 ease-in-out duration-150">Advisors</li>
+                        <a href="/advisors"><li className="cursor-pointer hover:text-primary_2 ease-in-out duration-150">Advisors</li></a>
                         <li className="flex items-center space-x-1 cursor-pointer active:text-primary_5 hover:text-primary_2 ease-in-out duration-150" onClick={handleSolutionsDropDown}>
                             <span>Solutions</span>
                             {(solutionsDropDown) ? <FaArrowDown /> : <FaArrowUp />}
