@@ -1,18 +1,63 @@
-import React, { useState } from "react";
-import { FaArrowUp, FaArrowDown  } from "react-icons/fa6";
+import React, { useState, useRef, useEffect } from "react";
+import { FaArrowUp, FaArrowDown } from "react-icons/fa6";
 import logo from '../../../public/logo.png'
 
-const Navbar = () => {
-    const [servicesDropDown, setServicesDropDown] = useState(false);
-    const [solutionsDropDown, setSolutionsDropDown] = useState(false);
+const solutions = [
+    {
+        title: "Business",
+        items: [
+            "Accounting and Business Advisory",
+            "Lending and Finance",
+            "General Insurance",
+            "Consulting",
+        ],
+    },
+    {
+        title: "Individuals",
+        items: [
+            "Wealth Management",
+            "SMSF Administration and Advisory",
+            "Lending and Finance",
+            "Risk Insurance",
+            "Accounting and Business Advisory",
+        ],
+    },
+    {
+        title: "Corporate",
+        items: [
+            "Corporate Finance",
+            "Tax Advisory",
+            "Consulting",
+            "Digital Consulting",
+            "External Audit",
+            "Internal Audit",
+            "General Insurance",
+            "Lending and Finance",
+        ],
+    },
+];
 
-    const handleServicesDropDown = () => {
-        setServicesDropDown(!servicesDropDown);
-    }
+const Navbar = () => {
+    const [solutionsDropDown, setSolutionsDropDown] = useState(false);
+    const dropdownRef = useRef(null);
 
     const handleSolutionsDropDown = () => {
         setSolutionsDropDown(!solutionsDropDown);
     }
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                setSolutionsDropDown(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [])
+
     return (
         <>
             <div className="flex bg-primary_1 items-center justify-between h-32">
@@ -22,16 +67,35 @@ const Navbar = () => {
                 </div>
                 <div className="options">
                     <ul className="flex font-semibold text-primary_3 space-x-24">
-                        <li className="flex items-center space-x-1 cursor-pointer active:text-primary_5 hover:text-primary_2 ease-in-out duration-150" onClick={handleServicesDropDown}>
-                            <span>Services</span>
-                            {(servicesDropDown) ? <FaArrowDown /> : <FaArrowUp />}
-                        </li>
+                        <a href="/"><li className="cursor-pointer hover:text-primary_2 ease-in-out duration-150">Home</li></a>
                         <a href="/advisors"><li className="cursor-pointer hover:text-primary_2 ease-in-out duration-150">Advisors</li></a>
-                        <li className="flex items-center space-x-1 cursor-pointer active:text-primary_5 hover:text-primary_2 ease-in-out duration-150" onClick={handleSolutionsDropDown}>
+                        <li ref={dropdownRef} className="flex items-center space-x-1 cursor-pointer active:text-primary_5 hover:text-primary_2 ease-in-out duration-150" onClick={handleSolutionsDropDown}>
                             <span>Solutions</span>
-                            {(solutionsDropDown) ? <FaArrowDown /> : <FaArrowUp />}
+                            {(solutionsDropDown) ? <FaArrowUp /> : <FaArrowDown />}
+                            {solutionsDropDown && (
+                                <div className="absolute top-32 right-[550px] border border-primary_3 mt-2 bg-primary_1 shadow-lg p-4 z-50">
+                                    <div className="grid grid-cols-3 gap-8">
+                                        {solutions.map((category, index) => (
+                                            <div key={index}>
+                                                <p className="font-bold text-primary_5 mb-3">
+                                                    {category.title}
+                                                </p>
+                                                {category.items.map((item, idx) => (
+                                                    <a
+                                                        href="#"
+                                                        key={idx}
+                                                        className="block text-primary_3 hover:text-primary_2 ease-in-out duration-150 mb-2"
+                                                    >
+                                                        {item}
+                                                    </a>
+                                                ))}
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
                         </li>
-                        <li className="cursor-pointer hover:text-primary_2 ease-in-out duration-150">About Us</li>
+                        <a href="/about-us"><li className="cursor-pointer hover:text-primary_2 ease-in-out duration-150">About Us</li></a>
                     </ul>
                 </div>
                 <div className="contactUs relative flex space-x-3 right-28">

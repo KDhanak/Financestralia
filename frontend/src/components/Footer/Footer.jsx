@@ -37,7 +37,7 @@ const Footer = () => {
                         <p className="text-primary_5 text-base mb-5 font-medium items-start relative">About Us
                             <span className="absolute -bottom-1 left-0 w-10 h-[2px] bg-primary_3"></span>
                         </p>
-                        <a href="#"><p className="text-primary_3 mb-2 hover:text-primary_2 ease-in-out duration-150">Our People and story</p></a>
+                        <a href="/about-us"><p className="text-primary_3 mb-2 hover:text-primary_2 ease-in-out duration-150">Our People and story</p></a>
                     </div>
                 </div>
             </div>
