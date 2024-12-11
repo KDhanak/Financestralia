@@ -10,7 +10,6 @@ const Layout = () => {
             <div className='relative'>
                 <nav>
                     <Navbar />
-
                 </nav>
                 <main>
                     <Outlet />

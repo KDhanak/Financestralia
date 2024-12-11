@@ -63,7 +63,8 @@ const Navbar = () => {
             <div className="flex bg-primary_1 items-center justify-between h-32">
                 <div className="relative logo left-28">
                     <a href="/">
-                        <img className="block h-24" src={logo} /></a>
+                        <img className="block h-24" src={logo} />
+                    </a>
                 </div>
                 <div className="options">
                     <ul className="flex font-semibold text-primary_3 space-x-24">
