@@ -46,7 +46,6 @@ staticfiles/
 
 # Docker files
 **/docker-compose.override.yml
-**/Dockerfile*
 **/.docker/
 
 # PostgreSQL specific
