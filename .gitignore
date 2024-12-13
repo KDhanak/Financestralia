@@ -23,5 +23,67 @@ dist-ssr
 *.sln
 *.sw?
 
-# Backend
-\venv
+# Python bytecode
+*.pyc
+*.pyo
+__pycache__/
+
+# Virtual environment
+venv/
+env/
+.venv/
+.env/
+
+# Django specific
+*.log
+*.pot
+*.pyc
+*.pyo
+__pycache__/
+db.sqlite3 
+media/
+staticfiles/
+
+# Docker files
+**/docker-compose.override.yml
+**/Dockerfile*
+**/.docker/
+
+# PostgreSQL specific
+*.sql
+*.db
+*.dump
+
+# Environment variables
+.env
+.env.*
+*.env
+
+# Django secret key
+secret_key.txt  # or any file storing the Django secret key
+
+# PyCharm or VSCode specific
+.idea/
+.vscode/
+
+# Coverage and test reports
+.coverage
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+
+# Build artifacts
+*.egg
+*.egg-info
+dist/
+build/
+
+# Dependency directories
+node_modules/
+
+# Other
+*.bak
+*.swp
+*.swo
+
