@@ -3,7 +3,7 @@ from django.db import models
 class Advisor(models.Model):
     first_name = models.CharField(max_length=500)
     last_name = models.CharField(max_length=500)
-    email = models.EmailField(max_length=500)
+    email = models.EmailField(unique=True)
     office = models.CharField(max_length=500)
     speciality = models.CharField(max_length=500)
     gender = models.CharField(max_length=500)
