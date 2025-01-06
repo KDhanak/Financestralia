@@ -1,6 +1,6 @@
 from django.urls import path
-from . import views
+from .views import AdvisorView
 
 urlpatterns = [
-    path('advisors/', views.AdvisorView, name="fetch advisors")
+    path('advisors/', AdvisorView.as_view(), name="fetch advisors")
 ]
