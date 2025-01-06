@@ -16,7 +16,7 @@ const Advisors = () => {
     const [name, setName] = useState("");
     const [postcode, setPostcode] = useState("");
     const [filteredData, setFilteredData] = useState(data);
-    const { fetchAdvisor, loading, error } = useAdvisor();
+    const { advisor, loading, error } = useAdvisor();
 
     const handleSpecialityDropDown = () => {
         setSpecialityDropDown(!specialityDropDown);
@@ -65,8 +65,8 @@ const Advisors = () => {
         };
     }, []);
 
-    const advisorData = fetchAdvisor();
-    console.log(advisorData);
+    const advisors = advisor;
+    console.log(advisors);
 
     return (
         <>

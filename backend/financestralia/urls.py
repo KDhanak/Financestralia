@@ -2,5 +2,5 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.financestralia, name="Financestralia backend initial stage test.")
+    path('advisors/', views.AdvisorView, name="fetch advisors")
 ]

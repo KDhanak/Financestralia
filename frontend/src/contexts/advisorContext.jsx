@@ -18,8 +18,8 @@ export const AdvisorProvider = ({children}) => {
     
     const fetchAdvisor = async () => {
         try {
-            const response = await axios.get('https://financestralia.onrender.com/');
-            console.log(response.data);
+            const response = await axios.get('https://financestralia.onrender.com/finanstralia/advisors');
+            setAdvisor(response.data);
         } catch (error) {
             handleApiError(error, 'An error occurred while fetching advisor');
         } finally {

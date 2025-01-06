@@ -1,6 +1,11 @@
-from django.http import HttpResponse
+from rest_frameowrk.views import APIView
+from rest_framework import status
+from rest_framework.response import Response
+from .models import Advisor
+from .serializers import AdvisorSerializer
 
-def financestralia (request):
-    return HttpResponse("Financestralia backend is working.")
-
-# Create your views here.
+class AdvisorView(APIView):
+    def get(self, request):
+        items = Advisor.objects.all()
+        serializer = AdvisorSerializer(items, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
