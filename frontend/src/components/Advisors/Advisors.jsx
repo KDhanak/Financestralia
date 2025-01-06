@@ -5,6 +5,7 @@ import data from './advisor_sample_data.json';
 import profileImage1 from '../../../public/profile_placeholder_1.jpg';
 import profileImage2 from '../../../public/profile_placeholder_2.jpg';
 import { useAdvisor } from "../../contexts/advisorContext";
+import Loading from "../Loading/Loading";
 
 const speciality = ["Select a speciality", "Corporate Finance", "General Finance", "Risk Insurance", "Tax Advisory", "Wealth Management", "Franchising", "Internal Audit", "Consulting", "External Audit", "Accounting and Business Advisory", "Digital Consulting", "Managed Payroll", "SMSF Administration and Advisory", "Lending and Finance", "Investment Advice",];
 
@@ -15,8 +16,12 @@ const Advisors = () => {
     const [specialityDropDown, setSpecialityDropDown] = useState(false);
     const [name, setName] = useState("");
     const [postcode, setPostcode] = useState("");
-    const [filteredData, setFilteredData] = useState(data);
-    const { advisor, loading, error } = useAdvisor();
+    const [filteredData, setFilteredData] = useState([]);
+    const {advisor, loading, error } = useAdvisor();
+
+    useEffect(() => {
+        setFilteredData(advisor);
+    }, [advisor]);
 
     const handleSpecialityDropDown = () => {
         setSpecialityDropDown(!specialityDropDown);
@@ -65,8 +70,8 @@ const Advisors = () => {
         };
     }, []);
 
-    const advisors = advisor;
-    console.log(advisors);
+    if (loading) return <Loading />;
+    if (error) return <p>Error: {error}</p>;
 
     return (
         <>
@@ -120,10 +125,10 @@ const Advisors = () => {
                     {filteredData.map((dataItem, index) => (
                         <div key={index} className="flex bg-primary_3">
                             <div className="w-1/5">
-                                <img className="size-48 p-5" src={(dataItem.gender === "Male") ? profileImage1 : profileImage2} />
+                                <img className="size-48 p-5" src={(dataItem.gender === "M") ? profileImage1 : profileImage2} />
                             </div>
                             <div className="w-2/5 mt-5">
-                                <p className="text-primary_1 font-medium">{dataItem.name}</p>
+                                <p className="text-primary_1 font-medium">{dataItem.first_name} {dataItem.last_name}</p>
                                 <p className="text-primary_4 font-normal text-sm">{dataItem.role}</p>
                                 <p className="text-primary_1 font-medium mt-14">My Speciality</p>
                                 <p className="text-primary_5 text-base mb-5 font-normal items-start relative">{dataItem.speciality}

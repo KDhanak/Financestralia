@@ -6,6 +6,7 @@ class Advisor(models.Model):
     email = models.EmailField(max_length=500)
     office = models.CharField(max_length=500, null=True, blank=True)
     speciality = models.CharField(max_length=500, null=True, blank=True)
+    role = models.CharField(max_length=500, null=True, blank=True)
     gender = models.CharField(max_length=10, choices=[('M', 'Male'), ('F', 'Female')], null=True, blank=True)
     
     def __str__(self):

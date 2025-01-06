@@ -17,17 +17,25 @@ export const AdvisorProvider = ({children}) => {
     };
     
     const fetchAdvisor = async () => {
+        setLoading(true);
+        setError(null);
         try {
-            const response = await axios.get('https://financestralia.onrender.com/finanstralia/advisors');
-            console.log(response);
-            setAdvisor(response);
+            const response = await axios.get('https://financestralia.onrender.com/financestralia/advisors');
+            setAdvisor(response.data);
+            console.log(response.data);
+            return true;
         } catch (error) {
             handleApiError(error, 'An error occurred while fetching advisor');
+            return false;
         } finally {
             setLoading(false);
         }
 
     };
+
+    useEffect(() => {
+        fetchAdvisor();
+    }, []);
 
     return (
         <AdvisorContext.Provider value={{fetchAdvisor, advisor, loading, error}}>
