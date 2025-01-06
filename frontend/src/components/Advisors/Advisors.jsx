@@ -4,6 +4,7 @@ import { FaArrowUp, FaArrowDown } from "react-icons/fa6";
 import data from './advisor_sample_data.json';
 import profileImage1 from '../../../public/profile_placeholder_1.jpg';
 import profileImage2 from '../../../public/profile_placeholder_2.jpg';
+import { useAdvisor } from "../../contexts/advisorContext";
 
 const speciality = ["Select a speciality", "Corporate Finance", "General Finance", "Risk Insurance", "Tax Advisory", "Wealth Management", "Franchising", "Internal Audit", "Consulting", "External Audit", "Accounting and Business Advisory", "Digital Consulting", "Managed Payroll", "SMSF Administration and Advisory", "Lending and Finance", "Investment Advice",];
 
@@ -15,6 +16,7 @@ const Advisors = () => {
     const [name, setName] = useState("");
     const [postcode, setPostcode] = useState("");
     const [filteredData, setFilteredData] = useState(data);
+    const { fetchAdvisor, loading, error } = useAdvisor();
 
     const handleSpecialityDropDown = () => {
         setSpecialityDropDown(!specialityDropDown);
@@ -62,6 +64,9 @@ const Advisors = () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
     }, []);
+
+    const advisorData = fetchAdvisor();
+    console.log(advisorData);
 
     return (
         <>
