@@ -12,6 +12,7 @@ import { MdAddLocationAlt } from "react-icons/md";
 import { AiOutlineDeliveredProcedure } from "react-icons/ai";
 import solutionImage from "../../../public/solutions.png"
 import { FaArrowUp, FaArrowDown } from "react-icons/fa6";
+import hero_image from "../../../public/hero-image.jpg";
 
 const iconSize = "35px";
 
@@ -19,7 +20,7 @@ const icons = {
     industries: {
         Agribusiness: <MdAgriculture size={iconSize} />,
         Education: <MdCastForEducation size={iconSize} />,
-        Franchising: <MdAddBusiness size={iconSize} />,
+        Franchise: <MdAddBusiness size={iconSize} />,
         "Trade and Customs": <FaShippingFast size={iconSize} />,
         "Not for Profit": <FaHandHoldingMedical size={iconSize} />,
         "Medical and Healthcare": <FaBriefcaseMedical size={iconSize} />,
@@ -45,7 +46,7 @@ const content = {
         industries: [
             "Agribusiness",
             "Education",
-            "Franchising",
+            "Franchise",
             "Trade and Customs",
         ],
         solutions: [
@@ -84,7 +85,7 @@ const content = {
             "Education",
             "Agribusiness",
             "Not for Profit",
-            "Franchising",
+            "Franchise",
         ],
         solutions: [
             "Wealth Management",
@@ -100,7 +101,7 @@ const content = {
     },
 };
 
-const speciality = ["Select a speciality","Corporate Finance", "General Finance", "Risk Insurance", "Tax Advisory", "Wealth Management", "Franchising", "Internal Audit", "Consulting", "External Audit", "Accounting and Business Advisory", "Digital Consulting", "Managed Payroll", "SMSF Administration and Advisory", "Lending and Finance", "Investment Advice",];
+const speciality = ["Select a speciality", "Corporate Finance", "General Finance", "Risk Insurance", "Tax Advisory", "Wealth Management", "Franchise", "Internal Audit", "Consulting", "External Audit", "Accounting and Business Advisory", "Digital Consulting", "Managed Payroll", "SMSF Administration and Advisory", "Lending and Finance", "Investment Advice",];
 
 const Home = () => {
     const [category, setCategory] = useState("Business");
@@ -130,6 +131,26 @@ const Home = () => {
         <>
             <div className="flex flex-col bg-primary_1">
                 <div className="menu flex flex-col h-1/5">
+                    <div>
+                        <div className="flex flex-col justify-between items-center bg-primary_3">
+                            <div className="relative w-full h-96">
+                                {/* Background Image */}
+                                <img src={hero_image} className="h-full w-full object-cover opacity-80" />
+
+                                {/* Gradient Overlay */}
+                                <div className="absolute inset-0 bg-gradient-to-b from-primary_1/80 to-primary_1/30"></div>
+
+                                {/* Overlay Text */}
+                                <div className="absolute inset-0 flex flex-col items-center text-center p-6">
+                                    <p className="text-4xl font-bold text-primary_5">Smart Financial Strategies for a Secure Future.</p>
+                                    <p className="text-2xl mt-2 max-w-3xl text-primary_3">
+                                        We help individuals and businesses build wealth, reduce taxes, and achieve financial freedom with expert advice tailored to your needs.
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                     <div className="h-1/5 flex flex-row space-x-1 justify-center bg-primary_3">
                         {Object.keys(content).map((cat) => (
                             <button key={cat} onClick={() => setCategory(cat)} className={`border active:text-primary_5 active:border-primary_5 ease-in-out duration-150 border-primary_1 px-5 py-2 mt-4 text-primary_1 font-medium ${category === cat ? "bg-primary_5 text-primary_3 border-primary_3" : ""}`}>{cat}</button>

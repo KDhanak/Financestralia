@@ -75,7 +75,7 @@ const Advisors = () => {
     return (
         <>
             <Helmet>
-                <title>Our Advisors</title>
+                <title>Our Team</title>
             </Helmet>
 
             <div className="flex flex-col">

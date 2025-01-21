@@ -69,7 +69,7 @@ const Navbar = () => {
                 <div className="options">
                     <ul className="flex font-semibold text-primary_3 space-x-24">
                         <a href="/"><li className="cursor-pointer hover:text-primary_2 ease-in-out duration-150">Home</li></a>
-                        <a href="/advisors"><li className="cursor-pointer hover:text-primary_2 ease-in-out duration-150">Advisors</li></a>
+                        <a href="/advisors"><li className="cursor-pointer hover:text-primary_2 ease-in-out duration-150">Our Team</li></a>
                         <li ref={dropdownRef} className="flex items-center space-x-1 cursor-pointer active:text-primary_5 hover:text-primary_2 ease-in-out duration-150" onClick={handleSolutionsDropDown}>
                             <span>Solutions</span>
                             {(solutionsDropDown) ? <FaArrowUp /> : <FaArrowDown />}
