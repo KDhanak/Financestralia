@@ -6,7 +6,7 @@ import profileImage2 from '../../../public/profile_placeholder_2.jpg';
 import { useAdvisor } from "../../contexts/advisorContext";
 import Loading from "../Loading/Loading";
 
-const speciality = ["Select a speciality", "Corporate Finance", "General Finance", "Risk Insurance", "Tax Advisory", "Wealth Management", "Franchising", "Internal Audit", "Consulting", "External Audit", "Accounting and Business Advisory", "Digital Consulting", "SMSF Administration and Advisory", "Lending and Finance", "Investment Advice",];
+const speciality = ["Select a speciality", "Corporate Finance", "General Finance", "Risk Insurance", "Tax Advisory", "Wealth Management", "Franchising", "Internal Audit", "Consulting", "External Audit", "Accounting", "Digital Consulting", "SMSF Administration and Advisory", "Lending and Finance", "Investment Advice",];
 
 const Advisors = () => {
     const dropdownRef = useRef(null);
@@ -16,7 +16,7 @@ const Advisors = () => {
     const [name, setName] = useState("");
     const [postcode, setPostcode] = useState("");
     const [filteredData, setFilteredData] = useState([]);
-    const {advisor, loading, error } = useAdvisor();
+    const { advisor, loading, error } = useAdvisor();
 
     useEffect(() => {
         setFilteredData(advisor);
@@ -85,13 +85,13 @@ const Advisors = () => {
                 </p>
                 <div>
                     <form className="flex flex-row justify-center border border-white items-center space-x-5 py-3" onSubmit={(e) => filterData(e)}>
-                        <input className="bg-primary_4 h-10 border-2 border-primary_4 focus:border-primary_5 placeholder:text-primary_3 w-56 text-center text-primary_3 outline-none" placeholder="Advisor Name" value={name} onChange={(e) => setName(e.target.value)}></input>
+                        <input className="bg-primary_4 h-10 border-2 border-primary_4 focus:border-primary_5 placeholder:text-primary_3 tablet:w-40 laptop:w-56 text-center text-primary_3 outline-none" placeholder="Advisor Name" value={name} onChange={(e) => setName(e.target.value)}></input>
                         <p className="text-primary_1 font-medium my-3">OR</p>
-                        <input className="bg-white h-10 border-2 border-primary_4 focus:border-primary_5 w-56 text-center text-primary_1 outline-none" placeholder="Postcode" value={postcode} onChange={(e) => setPostcode(e.target.value)}></input>
+                        <input className="bg-white h-10 border-2 border-primary_4 focus:border-primary_5 tablet:w-40 laptop:w-56 text-center text-primary_1 outline-none" placeholder="Postcode" value={postcode} onChange={(e) => setPostcode(e.target.value)}></input>
                         <p className="text-primary_1 font-medium my-3">OR</p>
                         <div className="relative" ref={dropdownRef}>
                             <div
-                                className="flex items-center justify-between bg-white h-auto border-2 border-primary_4 w-56 text-center text-primary_1 outline-none py-2 px-3 cursor-pointer"
+                                className="flex items-center justify-between bg-white h-auto border-2 border-primary_4 tablet:w-40 laptop:w-56 text-center text-primary_1 outline-none py-2 px-3 cursor-pointer"
                                 onClick={() => setShowList(!showList)}
                             >
                                 <span>{selected}</span>
@@ -119,8 +119,8 @@ const Advisors = () => {
                 </div>
                 <p onClick={handleReset} className="self-center text-lg hover:underline text-primary_5 -mt-2 mb-2 cursor-pointer">Reset Filters</p>
             </div >
-            <div className="flex flex-col bg-white">
-                <div className="mx-[450px] flex flex-col space-y-5">
+            <div className="flex flex-col">
+                <div className="tablet:mx-[50px] laptop:mx-[100px] lLaptop:mx-[300px] monitor:mx-[500px] 4K:mx-[750px] flex flex-col space-y-5">
                     {filteredData.map((dataItem, index) => (
                         <div key={index} className="flex bg-primary_3">
                             <div className="w-1/5">
@@ -135,13 +135,15 @@ const Advisors = () => {
                                 </p>
 
                             </div>
-                            <div className="w-1/5 mt-5">
-                                <p className="text-primary_1 font-medium">Phone</p>
-                                <p className="text-primary_1 font-normal">{dataItem.phone}</p>
-                            </div>
-                            <div className="w-1/5 mt-5">
-                                <p className="text-primary_1 font-medium">Office</p>
-                                <p className="text-primary_1 font-normal">{dataItem.office}</p>
+                            <div className="w-2/5 mt-5">
+                                <div>
+                                    <p className="text-primary_1 font-medium">Email</p>
+                                    <p className="text-primary_1 font-normal">{dataItem.email}</p>
+                                </div>
+                                <div className="mt-10">
+                                    <p className="text-primary_1 font-medium">Office</p>
+                                    <p className="text-primary_1 font-normal">{dataItem.office}</p>
+                                </div>
                             </div>
                         </div>
 

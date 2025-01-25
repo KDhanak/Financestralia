@@ -6,7 +6,7 @@ const solutions = [
     {
         title: "Business",
         items: [
-            "Accounting and Business Advisory",
+            "Accounting",
             "Lending and Finance",
             "General Insurance",
             "Consulting",
@@ -19,7 +19,7 @@ const solutions = [
             "SMSF Administration and Advisory",
             "Lending and Finance",
             "Risk Insurance",
-            "Accounting and Business Advisory",
+            "Accounting",
         ],
     },
     {
@@ -61,20 +61,20 @@ const Navbar = () => {
     return (
         <>
             <div className="flex bg-primary_1 items-center justify-between h-32">
-                <div className="relative logo left-28">
+                <div className="relative logo laptop:left-28 tablet:left-6">
                     <a href="/">
-                        <img className="block h-24" src={logo} />
+                        <img className="block h-10 laptop:h-24 tablet:h-20" src={logo} />
                     </a>
                 </div>
                 <div className="options">
-                    <ul className="flex font-semibold text-primary_3 space-x-24">
+                    <ul className="flex font-semibold text-primary_3  laptop:space-x-12 lLaptop:space-x-24 tablet:space-x-12 tablet:text-sm laptop:text-base">
                         <a href="/"><li className="cursor-pointer hover:text-primary_2 ease-in-out duration-150">Home</li></a>
                         <a href="/advisors"><li className="cursor-pointer hover:text-primary_2 ease-in-out duration-150">Our Team</li></a>
                         <li ref={dropdownRef} className="flex items-center space-x-1 cursor-pointer active:text-primary_5 hover:text-primary_2 ease-in-out duration-150" onClick={handleSolutionsDropDown}>
                             <span>Solutions</span>
                             {(solutionsDropDown) ? <FaArrowUp /> : <FaArrowDown />}
                             {solutionsDropDown && (
-                                <div className="absolute top-32 right-[550px] border border-primary_3 mt-2 bg-primary_1 shadow-lg p-4 z-50">
+                                <div className="absolute top-32 left-[100px] right-[100px] lLaptop:left-[400px] lLaptop:right-[400px] monitor:left-[600px] monitor:right-[600px] border border-primary_3 mt-2 bg-primary_1 shadow-lg p-4 z-50">
                                     <div className="grid grid-cols-3 gap-8">
                                         {solutions.map((category, index) => (
                                             <div key={index}>
@@ -99,9 +99,9 @@ const Navbar = () => {
                         <a href="/about-us"><li className="cursor-pointer hover:text-primary_2 ease-in-out duration-150">About Us</li></a>
                     </ul>
                 </div>
-                <div className="contactUs relative flex space-x-3 right-28">
-                    <button className="border-2 py-2 px-5 text-primary_3 font-medium active:text-primary_5 active:border-primary_5 ease-in-out duration-150">Locations</button>
-                    <button className="border-2 py-2 px-5 text-primary_3 font-medium bg-primary_2 active:bg-primary_4 active:text-primary_5 active:border-primary_5 ease-in-out duration-150">Contact Us</button>
+                <div className="contactUs relative flex space-x-3 tablet:right-6 laptop:right-28">
+                    <button className="border-2 tablet:py-1 tablet:px-3.5 laptop:py-2 laptop:px-5 tablet:text-sm text-base text-primary_3 font-medium active:text-primary_5 active:border-primary_5 ease-in-out duration-150">Locations</button>
+                    <button className="border-2 tablet:py-1 tablet:px-3.5 laptop:py-2 laptop:px-5 tablet:text-sm text-base text-primary_3 font-medium bg-primary_2 active:bg-primary_4 active:text-primary_5 active:border-primary_5 ease-in-out duration-150">Contact Us</button>
                 </div>
             </div>
         </>

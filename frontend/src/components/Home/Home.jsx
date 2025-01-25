@@ -27,7 +27,7 @@ const icons = {
         Government: <RiGovernmentFill size={iconSize} />,
     },
     solutions: {
-        "Accounting and Business Advisory": <FaTripadvisor size={iconSize} />,
+        "Accounting": <FaTripadvisor size={iconSize} />,
         "General Insurance": <GoShieldCheck size={iconSize} />,
         "Lending and Finance": <GiReceiveMoney size={iconSize} />,
         Consulting: <TbDeviceDesktopAnalytics size={iconSize} />,
@@ -50,7 +50,7 @@ const content = {
             "Trade and Customs",
         ],
         solutions: [
-            "Accounting and Business Advisory",
+            "Accounting",
             "General Insurance",
             "Lending and Finance",
             "Consulting",
@@ -89,7 +89,7 @@ const content = {
         ],
         solutions: [
             "Wealth Management",
-            "Accounting and Business Advisory",
+            "Accounting",
             "SMSF Administration and Advisory",
             "Risk Insurance",
         ],
@@ -101,7 +101,7 @@ const content = {
     },
 };
 
-const speciality = ["Select a speciality", "Corporate Finance", "General Finance", "Risk Insurance", "Tax Advisory", "Wealth Management", "Franchise", "Internal Audit", "Consulting", "External Audit", "Accounting and Business Advisory", "Digital Consulting", "Managed Payroll", "SMSF Administration and Advisory", "Lending and Finance", "Investment Advice",];
+const speciality = ["Select a speciality", "Corporate Finance", "General Finance", "Risk Insurance", "Tax Advisory", "Wealth Management", "Franchise", "Internal Audit", "Consulting", "External Audit", "Accounting", "Digital Consulting", "Managed Payroll", "SMSF Administration and Advisory", "Lending and Finance", "Investment Advice",];
 
 const Home = () => {
     const [category, setCategory] = useState("Business");
@@ -157,14 +157,14 @@ const Home = () => {
                         ))}
                     </div>
                     <div className="flex flex-col py-10 bg-primary_1">
-                        <div className="mx-[400px] flex flex-row">
+                        <div className="mx-[250px] tablet:mx-[100px] laptop:mx-[150px] lLaptop:mx-[250px] monitor:mx-[600px] flex flex-row">
                             <div className="flex w-1/3 flex-col justify-center border border-white items-center py-3">
                                 <p className="text-primary_3 font-medium mb-6 mt-2">Find an advisor near you.</p>
-                                <input className="bg-white h-10 border-2 border-primary_4 focus:border-primary_5 w-56 text-center text-primary_1 outline-none" placeholder="Postcode"></input>
+                                <input className="bg-white h-10 border-2 border-primary_4 focus:border-primary_5 tablet:w-40 laptop:w-56 text-center text-primary_1 outline-none" placeholder="Postcode"></input>
                                 <p className="text-primary_3 font-medium my-3">OR</p>
                                 <div className="relative" ref={dropdownRef}>
                                     <div
-                                        className="flex items-center justify-between bg-white h-auto border-2 border-primary_4 w-56 text-center text-primary_1 outline-none py-2 px-3 cursor-pointer"
+                                        className="flex items-center justify-between bg-white h-auto border-2 border-primary_4 tablet:w-40 laptop:w-56 text-center text-primary_1 outline-none py-2 px-3 cursor-pointer"
                                         onClick={() => setShowList(!showList)}
                                     >
                                         <span>{selected}</span>
@@ -172,7 +172,7 @@ const Home = () => {
                                     </div>
                                     {showList && (
                                         <ul
-                                            className="absolute bg-white border border-primary_4 w-56 mt-1 z-10 overflow-y-auto max-h-96"
+                                            className="absolute bg-white border border-primary_4 tablet:w-40 laptop:w-56 mt-1 z-10 overflow-y-auto max-h-96"
                                             onClick={handleSpecialityDropDown}
                                         >
                                             {speciality.map((item, index) => (
@@ -215,7 +215,7 @@ const Home = () => {
                     </div>
                 </div>
                 <div className="bg-white mt-10">
-                    <div className="mx-[400px] flex flex-col mt-10">
+                    <div className="mx-[250px] tablet:mx-[100px] laptop:mx-[150px] lLaptop:mx-[250px] monitor:mx-[600px] flex flex-col mt-10">
                         <p className="font-medium text-2xl self-center my-3 text-primary_1 relative">
                             {content[category].heading}
                             <span className="absolute -bottom-1 left-0 w-1/3 h-[2px] bg-primary_5"></span>
@@ -226,7 +226,7 @@ const Home = () => {
                     </div>
                 </div>
                 <div className="bg-white">
-                    <div className="mx-[400px] mt-10 flex flex-col">
+                    <div className="mx-[250px] tablet:mx-[100px] laptop:mx-[150px] lLaptop:mx-[250px] monitor:mx-[600px] mt-10 flex flex-col">
                         <p className="font-medium text-2xl self-center my-3 text-primary_1 relative">
                             About Us
                             <span className="absolute -bottom-1 left-0 w-1/3 h-[2px] bg-primary_5"></span>

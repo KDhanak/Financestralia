@@ -12,7 +12,7 @@ const About = () => {
                 <div className="bg-primary_3">
                     <img src={hero_image} className="h-96 w-full object-cover"></img>
                 </div>
-                <div className="h-3/5 mx-[450px] bg-primary_4 text-primary_3 p-5 z-50 -mt-28 relative shadow-lg">
+                <div className="h-3/5 tablet:mx-[100px] laptop:mx-[200px] lLaptop:mx-[300px] monitor:mx-[600px] 4K:mx-[700px] bg-primary_4 text-primary_3 p-5 z-50 -mt-28 relative shadow-lg">
                     <p className="text-lg font-bold text-primary_5">Meeting Your Needs Through Collaboration</p>
                     <p className="mb-5">At Financestralia, our mission is to address the needs of businesses and the individuals driving them through a collaborative approach to financial services. With a commitment to offering integrated solutions, we provide the confidence that comes from knowing your financial and lifestyle goals are in capable hands.</p>
 
