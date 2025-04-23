@@ -153,11 +153,11 @@ const Home = () => {
                     </div>
                     <div className="h-1/5 flex flex-row space-x-1 justify-center bg-primary_3">
                         {Object.keys(content).map((cat) => (
-                            <button key={cat} onClick={() => setCategory(cat)} className={`border active:text-primary_5 active:border-primary_5 ease-in-out duration-150 border-primary_1 px-5 py-2 mt-4 text-primary_1 font-medium ${category === cat ? "bg-primary_5 text-primary_3 border-primary_3" : ""}`}>{cat}</button>
+                            <button key={cat} onClick={() => setCategory(cat)} className={`border active:text-primary_5 active:border-primary_5 ease-in-out duration-150 border-primary_1 sMobile:px-2 sMobile:py-2 tablet:px-5 tablet:py-2 mt-4 text-primary_1 font-medium ${category === cat ? "bg-primary_5 text-primary_3 border-primary_3" : ""}`}>{cat}</button>
                         ))}
                     </div>
                     <div className="flex flex-col py-10 bg-primary_1">
-                        <div className="mx-[250px] tablet:mx-[100px] laptop:mx-[150px] lLaptop:mx-[250px] monitor:mx-[600px] flex flex-row">
+                        <div className="hidden tablet:flex flex-row mx-[250px] tablet:mx-[100px] laptop:mx-[150px] lLaptop:mx-[250px] monitor:mx-[600px]">
                             <div className="flex w-1/3 flex-col justify-center border border-white items-center py-3">
                                 <p className="text-primary_3 font-medium mb-6 mt-2">Find an advisor near you.</p>
                                 <input className="bg-white h-10 border-2 border-primary_4 focus:border-primary_5 tablet:w-40 laptop:w-56 text-center text-primary_1 outline-none" placeholder="Postcode"></input>
@@ -212,6 +212,62 @@ const Home = () => {
                                 </ul>
                             </div>
                         </div>
+
+                        <div className="flex flex-col">
+                            <div className="flex flex-col justify-center items-center py-3">
+                                <p className="text-primary_3 font-medium mb-6 mt-2">Find an advisor near you.</p>
+                                <input className="bg-white h-10 border-2 border-primary_4 focus:border-primary_5 text-center text-primary_1 outline-none" placeholder="Postcode"></input>
+                                <p className="text-primary_3 font-medium my-3">OR</p>
+                                <div className="relative" ref={dropdownRef}>
+                                    <div
+                                        className="flex items-center justify-between bg-white h-auto border-2 border-primary_4 text-center text-primary_1 outline-none py-2 px-3 cursor-pointer"
+                                        onClick={() => setShowList(!showList)}
+                                    >
+                                        <span>{selected}</span>
+                                        {showList ? <FaArrowUp /> : <FaArrowDown />}
+                                    </div>
+                                    {showList && (
+                                        <ul
+                                            className="absolute bg-white border border-primary_4 mt-1 z-10 overflow-y-auto max-h-96"
+                                            onClick={handleSpecialityDropDown}
+                                        >
+                                            {speciality.map((item, index) => (
+                                                <li
+                                                    key={index}
+                                                    className="py-2 px-4 hover:bg-primary_5 hover:text-white cursor-pointer"
+                                                    onClick={() => { setShowList(false); setSelected(item) }}
+                                                >
+                                                    {item}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    )}
+                                </div>
+                                <button className="border-2 mt-28 py-2 px-5 text-primary_3 font-medium bg-primary_2 active:bg-primary_4 active:text-primary_5 active:border-primary_5 ease-in-out duration-150">Find</button>
+                            </div>
+                            <div className="flex border-t text-primary_1 border-b border-b-primary_1 bg-primary_3 flex-col py-3">
+                                <p className="font-bold text-lg mb-8 self-center">Our specailist industries</p>
+                                <ul className="font-medium space-y-3 ml-4">
+                                    {content[category].industries.map((industry, index) => (
+                                        <li key={index} className="flex space-x-5">
+                                            {icons.industries[industry]}
+                                            <span>{industry}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                            <div className="flex border-t text-primary_1 bg-primary_3 flex-col py-3">
+                                <p className="font-bold text-lg mb-8 self-center">Solutions for you</p>
+                                <ul className="font-medium space-y-3 ml-4">
+                                    {content[category].solutions.map((solution, index) => (
+                                        <li key={index} className="flex  space-x-5">
+                                            {icons.solutions[solution]}
+                                            <span>{solution}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div className="bg-white mt-10">
@@ -227,7 +283,7 @@ const Home = () => {
                 </div>
 
                 <div className="bg-white mt-10">
-                    <div className="hidden sMobile:flex tablet:mx-[100px] laptop:mx-[150px] lLaptop:mx-[250px] monitor:mx-[600px]  flex-col mt-10">
+                    <div className="hidden sMobile:flex flex-col mt-10">
                         <p className="font-medium text-xl self-center my-3 text-primary_1 relative">
                             {content[category].heading}
                             <span className="absolute -bottom-1 left-0 w-1/3 h-[2px] bg-primary_5"></span>

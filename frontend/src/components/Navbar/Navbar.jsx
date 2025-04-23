@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { FaArrowUp, FaArrowDown } from "react-icons/fa6";
 import { FiMenu } from "react-icons/fi";
+import { FaTimes } from "react-icons/fa";
 import { CiLocationOn } from "react-icons/ci";
 import { MdOutlineContactPhone } from "react-icons/md";
 import logo from '../../../public/logo.png'
@@ -130,7 +131,7 @@ const Navbar = () => {
             >
                 <div className="flex justify-end p-4">
                     <button onClick={toggleMobileMenu} aria-label="Close mobile menu">
-                        <FiMenu className="text-primary_3 text-2xl" />
+                        <FaTimes className="text-primary_3 text-2xl" />
                     </button>
                 </div>
                 <ul className="flex flex-col font-semibold text-primary_3 text-base p-4 space-y-4 overflow-auto">
