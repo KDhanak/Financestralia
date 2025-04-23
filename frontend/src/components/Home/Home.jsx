@@ -213,8 +213,8 @@ const Home = () => {
                             </div>
                         </div>
 
-                        <div className="flex flex-col">
-                            <div className="flex flex-col justify-center items-center py-3">
+                        <div className="flex flex-col m-2">
+                            <div className="flex flex-col justify-center items-center py-3 border border-primary_3">
                                 <p className="text-primary_3 font-medium mb-6 mt-2">Find an advisor near you.</p>
                                 <input className="bg-white h-10 border-2 border-primary_4 focus:border-primary_5 text-center text-primary_1 outline-none" placeholder="Postcode"></input>
                                 <p className="text-primary_3 font-medium my-3">OR</p>
@@ -243,7 +243,7 @@ const Home = () => {
                                         </ul>
                                     )}
                                 </div>
-                                <button className="border-2 mt-28 py-2 px-5 text-primary_3 font-medium bg-primary_2 active:bg-primary_4 active:text-primary_5 active:border-primary_5 ease-in-out duration-150">Find</button>
+                                <button className="border-2 mt-10 py-2 px-5 text-primary_3 font-medium bg-primary_2 active:bg-primary_4 active:text-primary_5 active:border-primary_5 ease-in-out duration-150">Find</button>
                             </div>
                             <div className="flex border-t text-primary_1 border-b border-b-primary_1 bg-primary_3 flex-col py-3">
                                 <p className="font-bold text-lg mb-8 self-center">Our specailist industries</p>
