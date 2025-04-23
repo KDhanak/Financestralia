@@ -74,9 +74,9 @@ const Navbar = () => {
     return (
         <>
             <div className="flex bg-primary_1 items-center justify-between h-32">
-                <div className="relative logo laptop:left-28 tablet:left-6 lMobile:left-6">
+                <div className="relative logo laptop:left-28 tablet:left-6 sMobile:left-6">
                     <a href="/">
-                        <img className="block h-10 laptop:h-24 tablet:h-20 lMobile:h-16" src={logo} />
+                        <img className="block h-10 laptop:h-24 tablet:h-20 sMobile:h-16" src={logo} />
                     </a>
                 </div>
                 <div className="options">
@@ -112,12 +112,12 @@ const Navbar = () => {
                         <a href="/about-us"><li className="cursor-pointer hover:text-primary_2 ease-in-out duration-150">About Us</li></a>
                     </ul>
                 </div>
-                <div className="hidden contactUs relative tablet:flex space-x-3 lMobile:right-6 laptop:right-28">
-                    <button className="border-2 lMobile:py-1 lMobile:px-3.5 laptop:py-2 laptop:px-5 lMobile:text-sm text-base text-primary_3 font-medium active:text-primary_5 active:border-primary_5 ease-in-out duration-150">Locations</button>
-                    <button className="border-2 lMobile:py-1 lMobile:px-3.5 laptop:py-2 laptop:px-5 lMobile:text-sm text-base text-primary_3 font-medium bg-primary_2 active:bg-primary_4 active:text-primary_5 active:border-primary_5 ease-in-out duration-150">Contact Us</button>
+                <div className="hidden contactUs relative tablet:flex space-x-3 sMobile:right-6 laptop:right-28">
+                    <button className="border-2 sMobile:py-1 sMobile:px-3.5 laptop:py-2 laptop:px-5 sMobile:text-sm text-base text-primary_3 font-medium active:text-primary_5 active:border-primary_5 ease-in-out duration-150">Locations</button>
+                    <button className="border-2 sMobile:py-1 sMobile:px-3.5 laptop:py-2 laptop:px-5 sMobile:text-sm text-base text-primary_3 font-medium bg-primary_2 active:bg-primary_4 active:text-primary_5 active:border-primary_5 ease-in-out duration-150">Contact Us</button>
                 </div>
 
-                <div className="tablet:hidden contactUs relative sMobile:flex space-x-3 lMobile:left-7 laptop:right-28">
+                <div className="tablet:hidden contactUs relative sMobile:flex space-x-3 sMobile:left-7 laptop:right-28">
                     <CiLocationOn className="text-3xl text-primary_3 active:text-primary_5 active:border-primary_5 ease-in-out duration-150" />
                     <MdOutlineContactPhone className="text-3xl text-primary_3 active:bg-primary_4 active:text-primary_5 active:border-primary_5 ease-in-out duration-150" />
                 </div>
