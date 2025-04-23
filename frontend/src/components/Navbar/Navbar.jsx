@@ -53,7 +53,6 @@ const Navbar = () => {
 
     const toggleMobileMenu = () => {
         setMobileMenuOption(!mobileMenuOption);
-        setSolutionsDropDown(false);
     }
 
     useEffect(() => {
@@ -162,17 +161,17 @@ const Navbar = () => {
                             {solutionsDropDown ? <FaArrowUp /> : <FaArrowDown />}
                         </div>
                         {solutionsDropDown && (
-                            <div className="mt-2 bg-primary_1 border border-primary_3 p-4">
+                            <div className="mt-2 bg-primary_1 border border-primary_3 p-2 mr-6">
                                 {solutions.map((category, index) => (
                                     <div key={index} className="mb-4">
-                                        <p className="font-bold text-primary_5 mb-2">
+                                        <p className="font-bold text-base text-primary_5 mb-2">
                                             {category.title}
                                         </p>
                                         {category.items.map((item, idx) => (
                                             <a
                                                 href="#"
                                                 key={idx}
-                                                className="block text-primary_3 hover:text-primary_2 ease-in-out duration-150 mb-1"
+                                                className="block font-normal text-sm text-primary_3 hover:text-primary_2 ease-in-out duration-150 mb-1"
                                                 onClick={toggleMobileMenu}
                                             >
                                                 {item}
