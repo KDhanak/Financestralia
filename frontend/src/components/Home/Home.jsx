@@ -129,7 +129,7 @@ const Home = () => {
 
     return (
         <>
-            <div className="flex flex-col bg-primary_1">
+            <div className="flex flex-col bg-primary_1 right-0 left-0">
                 <div className="menu flex flex-col h-1/5">
                     <div>
                         <div className="flex flex-col justify-between items-center bg-primary_3">
@@ -215,7 +215,7 @@ const Home = () => {
                     </div>
                 </div>
                 <div className="bg-white mt-10">
-                    <div className="mx-[250px] tablet:mx-[100px] laptop:mx-[150px] lLaptop:mx-[250px] monitor:mx-[600px] flex flex-col mt-10">
+                    <div className="hidden tablet:flex tablet:mx-[100px] laptop:mx-[150px] lLaptop:mx-[250px] monitor:mx-[600px] flex-col mt-10">
                         <p className="font-medium text-2xl self-center my-3 text-primary_1 relative">
                             {content[category].heading}
                             <span className="absolute -bottom-1 left-0 w-1/3 h-[2px] bg-primary_5"></span>
@@ -225,8 +225,21 @@ const Home = () => {
                         ))}
                     </div>
                 </div>
+
+                <div className="bg-white mt-10">
+                    <div className="hidden sMobile:flex tablet:mx-[100px] laptop:mx-[150px] lLaptop:mx-[250px] monitor:mx-[600px]  flex-col mt-10">
+                        <p className="font-medium text-xl self-center my-3 text-primary_1 relative">
+                            {content[category].heading}
+                            <span className="absolute -bottom-1 left-0 w-1/3 h-[2px] bg-primary_5"></span>
+                        </p>
+                        {content[category].summary.map((summaryItem, index) => (
+                            <p key={index} className="mb-3 font-normal text-base text-primary_1 ">{summaryItem}</p>
+                        ))}
+                    </div>
+                </div>
+
                 <div className="bg-white">
-                    <div className="mx-[250px] tablet:mx-[100px] laptop:mx-[150px] lLaptop:mx-[250px] monitor:mx-[600px] mt-10 flex flex-col">
+                    <div className="hidden tablet:flex tablet:mx-[100px] laptop:mx-[150px] lLaptop:mx-[250px] monitor:mx-[600px] mt-10  flex-col">
                         <p className="font-medium text-2xl self-center my-3 text-primary_1 relative">
                             About Us
                             <span className="absolute -bottom-1 left-0 w-1/3 h-[2px] bg-primary_5"></span>
@@ -247,6 +260,36 @@ const Home = () => {
                                 <p> Our forward-thinking approach empowers you to address today’s challenges while proactively preparing for the opportunities and hurdles of tomorrow.</p>
                             </div>
                             <div className="flex flex-col w-1/3 p-2">
+                                <div className="flex items-center mb-2 space-x-2">
+                                    <img src={solutionImage} className="size-10"></img>
+                                    <p className="text-lg font-medium">Our Family Office Approach</p>
+                                </div>
+                                <p>We assign a dedicated point of contact to manage your needs, collaborating with experts within our team to deliver personalized, tailor-made solutions just for you.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="tablet:hidden sMobile:flex tablet:mx-[100px] laptop:mx-[150px] lLaptop:mx-[250px] monitor:mx-[600px] mt-10 flex-col">
+                        <p className="font-medium text-2xl self-center my-3 text-primary_1 relative">
+                            About Us
+                            <span className="absolute -bottom-1 left-0 w-1/3 h-[2px] bg-primary_5"></span>
+                        </p>
+                        <div className="flex relative flex-col justify-center text-primary_1 space-y-2">
+                            <div className="flex flex-col p-2">
+                                <div className="flex items-center mb-2 space-x-2">
+                                    <MdAddLocationAlt size={32} />
+                                    <p className="text-lg font-medium">A Large Geographical Presence</p>
+                                </div>
+                                <p>We are strategically located across Australia and New Zealand, with over 110 offices, ensuring convenient access to competitive solutions near you.</p>
+                            </div>
+                            <div className="flex flex-col p-2">
+                                <div className="flex items-center mb-2 space-x-2">
+                                    <AiOutlineDeliveredProcedure size={32} />
+                                    <p className="text-lg font-medium">A 'One Best Way' Approach</p>
+                                </div>
+                                <p> Our forward-thinking approach empowers you to address today’s challenges while proactively preparing for the opportunities and hurdles of tomorrow.</p>
+                            </div>
+                            <div className="flex flex-col p-2">
                                 <div className="flex items-center mb-2 space-x-2">
                                     <img src={solutionImage} className="size-10"></img>
                                     <p className="text-lg font-medium">Our Family Office Approach</p>

@@ -73,7 +73,7 @@ const Navbar = () => {
 
     return (
         <>
-            <div className="flex bg-primary_1 items-center justify-between h-32">
+            <div className="flex w-full bg-primary_1 items-center justify-between h-32">
                 <div className="relative logo laptop:left-28 tablet:left-6 sMobile:left-6">
                     <a href="/">
                         <img className="block h-10 laptop:h-24 tablet:h-20 sMobile:h-16" src={logo} />
