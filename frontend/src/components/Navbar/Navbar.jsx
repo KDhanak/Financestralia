@@ -115,7 +115,7 @@ const Navbar = () => {
                 </div>
                 <div className="hidden contactUs relative tablet:flex space-x-3 sMobile:right-6 laptop:right-28">
                     <button className="border-2 sMobile:py-1 sMobile:px-3.5 laptop:py-2 laptop:px-5 sMobile:text-sm text-base text-primary_3 font-medium active:text-primary_5 active:border-primary_5 ease-in-out duration-150">Locations</button>
-                    <button className="border-2 sMobile:py-1 sMobile:px-3.5 laptop:py-2 laptop:px-5 sMobile:text-sm text-base text-primary_3 font-medium bg-primary_2 active:bg-primary_4 active:text-primary_5 active:border-primary_5 ease-in-out duration-150">Contact Us</button>
+                    <a href="/contact-us"><button className="border-2 sMobile:py-1 sMobile:px-3.5 laptop:py-2 laptop:px-5 sMobile:text-sm text-base text-primary_3 font-medium bg-primary_2 active:bg-primary_4 active:text-primary_5 active:border-primary_5 ease-in-out duration-150">Contact Us</button></a>
                 </div>
 
                 <div className="tablet:hidden contactUs relative sMobile:flex space-x-3 sMobile:left-2 laptop:right-28">
