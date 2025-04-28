@@ -270,7 +270,7 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-                <div className="bg-white mt-10">
+                <div className="hidden tablet:flex bg-white mt-10">
                     <div className="hidden tablet:flex tablet:mx-[100px] laptop:mx-[150px] lLaptop:mx-[250px] monitor:mx-[600px] flex-col mt-10">
                         <p className="font-medium text-2xl self-center my-3 text-primary_1 relative">
                             {content[category].heading}
@@ -282,7 +282,7 @@ const Home = () => {
                     </div>
                 </div>
 
-                <div className="bg-white mt-10">
+                <div className="tablet:hidden flex bg-white mt-10">
                     <div className="hidden sMobile:flex flex-col mt-10 p-3">
                         <p className="font-medium text-xl self-center my-3 text-primary_1 relative">
                             {content[category].heading}

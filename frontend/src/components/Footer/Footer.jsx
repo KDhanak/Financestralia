@@ -8,7 +8,7 @@ const Footer = () => {
     return (
         <>
             <div className="bg-primary_1 mt-10">
-                <div className="flex flex-row justify-center mx-5 sMobile:hidden tablet:space-x-12 laptop:space-x-12 lLaptop:space-x-28 py-10">
+                <div className="tablet:flex hidden flex-row justify-center mx-5 sMobile:hidden tablet:space-x-12 laptop:space-x-12 lLaptop:space-x-28 py-10">
                     <div className="flex flex-col">
                         <p className="text-primary_5 text-base mb-5 font-medium items-start relative">Business
                             <span className="absolute -bottom-1 left-0 w-10 h-[2px] bg-primary_3"></span>
