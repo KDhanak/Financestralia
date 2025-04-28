@@ -43,6 +43,7 @@ __pycache__/
 db.sqlite3 
 media/
 staticfiles/
+migrations
 
 # Docker files
 **/docker-compose.override.yml
