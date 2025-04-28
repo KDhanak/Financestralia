@@ -35,8 +35,8 @@ class Query(models.Model):
         ("International", "International"),
     ]
         
-    client_type = models.CharField(max_length=3, choices=TYPE_CHOICES, default="IND")
-    query_type = models.CharField(max_length=3, choices=Query_TYPE_CHOICES, default="SRV")
+    client_type = models.CharField(max_length=25, choices=TYPE_CHOICES, default="IND")
+    query_type = models.CharField(max_length=25, choices=Query_TYPE_CHOICES, default="SRV")
     client_first_name = models.CharField(max_length=500)
     client_last_name = models.CharField(max_length=500)
     client_email = models.EmailField(max_length=500)
