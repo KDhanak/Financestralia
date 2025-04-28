@@ -45,7 +45,6 @@ class Query(models.Model):
     client_postcode = models.CharField(max_length=10, null=True, blank=True)
     client_message = models.TextField(null=True, blank=True)
     client_business_name = models.CharField(max_length=500, null=True, blank=True)
-    advisor = models.ForeignKey(Advisor, on_delete=models.CASCADE, null=True, blank=True)
-    
+    advisor = models.CharField(max_length=500, null=True, blank=True)
     def __str__(self):
         return f"{self.client_first_name} {self.client_last_name}"

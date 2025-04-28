@@ -5,15 +5,15 @@ const ContactUs = () => {
     const [formData, setFormData] = useState({
         client_type: "",
         query_type: "",
-        first_name: "",
-        last_name: "",
-        email: "",
-        phone: "",
-        state: "",
-        postcode: "",
-        business_name: "",
+        client_first_name: "",
+        client_last_name: "",
+        client_email: "",
+        client_phone: "",
+        client_state: "",
+        client_postcode: "",
+        client_business_name: "",
         advisor: "",
-        message: "",
+        client_message: "",
     });
     const { submitForm, error, loading, success } = useContactUs();
 
@@ -33,15 +33,15 @@ const ContactUs = () => {
             setFormData({
                 client_type: "",
                 query_type: "",
-                first_name: "",
-                last_name: "",
-                email: "",
-                phone: "",
-                state: "",
-                postcode: "",
-                business_name: "",
+                client_first_name: "",
+                client_last_name: "",
+                client_email: "",
+                client_phone: "",
+                client_state: "",
+                client_postcode: "",
+                client_business_name: "",
                 advisor: "",
-                message: "",
+                client_message: "",
             });
         }
 
@@ -79,24 +79,24 @@ const ContactUs = () => {
                         </select>
                     </div>
                     <div className="form-group space-x-2">
-                        <label htmlFor="first_name">First Name</label>
-                        <input type="text" id="first_name" name="first_name" className="border border-black" value={formData.first_name} onChange={handleChange} required />
+                        <label htmlFor="client_first_name">First Name</label>
+                        <input type="text" id="client_first_name" name="client_first_name" className="border border-black" value={formData.client_first_name} onChange={handleChange} required />
                     </div>
                     <div className="form-group space-x-2">
-                        <label htmlFor="last_name">Last Name</label>
-                        <input type="text" id="last_name" name="last_name" className="border border-black" value={formData.last_name} onChange={handleChange} required />
+                        <label htmlFor="client_last_name">Last Name</label>
+                        <input type="text" id="client_last_name" name="client_last_name" className="border border-black" value={formData.client_last_name} onChange={handleChange} required />
                     </div>
                     <div className="form-group space-x-2">
-                        <label htmlFor="email">Email</label>
-                        <input type="email" id="email" name="email" className="border border-black" value={formData.email} onChange={handleChange} required />
+                        <label htmlFor="client_email">Email</label>
+                        <input type="email" id="client_email" name="client_email" className="border border-black" value={formData.client_email} onChange={handleChange} required />
                     </div>
                     <div className="form-group space-x-2">
-                        <label htmlFor="phone">Phone</label>
-                        <input type="phone" id="phone" name="phone" className="border border-black" value={formData.phone} onChange={handleChange} required />
+                        <label htmlFor="client_phone">Phone</label>
+                        <input type="phone" id="client_phone" name="client_phone" className="border border-black" value={formData.client_phone} onChange={handleChange} required />
                     </div>
                     <div className="form-group space-x-2">
-                        <label htmlFor="state">State</label>
-                        <select id="state" name="state" className="border border-black" value={formData.state} onChange={handleChange} required>
+                        <label htmlFor="client_state">State</label>
+                        <select id="client_state" name="client_state" className="border border-black" value={formData.client_state} onChange={handleChange} required>
                             <option value="">Select a state</option>
                             <option value="NSW">New South Wales</option>
                             <option value="VIC">Victoria</option>
@@ -110,20 +110,20 @@ const ContactUs = () => {
                         </select>
                     </div>
                     <div className="form-group space-x-2">
-                        <label htmlFor="postcode">postcode</label>
-                        <input id="postcode" name="postcode" className="border border-black" value={formData.postcode} onChange={handleChange} required />
+                        <label htmlFor="client_postcode">Postcode</label>
+                        <input id="client_postcode" name="client_postcode" className="border border-black" value={formData.client_postcode} onChange={handleChange} required />
                     </div>
                     <div className="form-group space-x-2">
-                        <label htmlFor="business_name">Business Name</label>
-                        <input id="business_name" name="business_name" className="border border-black" value={formData.business_name} onChange={handleChange} required />
+                        <label htmlFor="client_business_name">Business Name</label>
+                        <input id="client_business_name" name="client_business_name" className="border border-black" value={formData.client_business_name} onChange={handleChange} required />
                     </div>
                     <div className="form-group space-x-2">
                         <label htmlFor="advisor">Advisor</label>
                         <input id="advisor" name="advisor" className="border border-black" value={formData.advisor} onChange={handleChange} required />
                     </div>
                     <div className="form-group space-x-2">
-                        <label htmlFor="message">Message</label>
-                        <textarea id="message" name="message" className="border border-black" value={formData.message} onChange={handleChange} required></textarea>
+                        <label htmlFor="client_message">Message</label>
+                        <textarea id="client_message" name="client_message" className="border border-black" value={formData.client_message} onChange={handleChange} required></textarea>
                     </div>
                     <button type="submit" className="items-center justify-center border border-black">Submit</button>
                 </form>

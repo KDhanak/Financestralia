@@ -24,6 +24,7 @@ export const ContactUsProvider = ({children}) => {
     const submitForm = async (formData) => {
         setLoading(true);
         setError(null);
+        console.log('Submitting form data:', formData);
         try {
             const response = await axios.post('https://financestralia.onrender.com/financestralia/query/', formData);
             setSuccess(true);
