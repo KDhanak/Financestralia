@@ -213,7 +213,7 @@ const Home = () => {
                             </div>
                         </div>
 
-                        <div className="flex flex-col m-2">
+                        <div className="tablet:hidden flex flex-col m-2">
                             <div className="flex flex-col justify-center items-center py-3 border border-primary_3">
                                 <p className="text-primary_3 font-medium mb-6 mt-2">Find an advisor near you.</p>
                                 <input className="bg-white h-10 border-2 border-primary_4 focus:border-primary_5 text-center text-primary_1 outline-none" placeholder="Postcode"></input>

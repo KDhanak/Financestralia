@@ -118,7 +118,7 @@ const Navbar = () => {
                     <button className="border-2 sMobile:py-1 sMobile:px-3.5 laptop:py-2 laptop:px-5 sMobile:text-sm text-base text-primary_3 font-medium bg-primary_2 active:bg-primary_4 active:text-primary_5 active:border-primary_5 ease-in-out duration-150">Contact Us</button>
                 </div>
 
-                <div className="tablet:hidden contactUs relative sMobile:flex space-x-3 sMobile:left-7 laptop:right-28">
+                <div className="tablet:hidden contactUs relative sMobile:flex space-x-3 sMobile:left-2 laptop:right-28">
                     <CiLocationOn className="text-3xl text-primary_3 active:text-primary_5 active:border-primary_5 ease-in-out duration-150" />
                     <MdOutlineContactPhone className="text-3xl text-primary_3 active:bg-primary_4 active:text-primary_5 active:border-primary_5 ease-in-out duration-150" />
                 </div>
