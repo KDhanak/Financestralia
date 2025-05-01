@@ -40,11 +40,12 @@ class Query(models.Model):
     client_first_name = models.CharField(max_length=500)
     client_last_name = models.CharField(max_length=500)
     client_email = models.EmailField(max_length=500)
-    client_phone = models.CharField(max_length=15, null=True, blank=True)
-    client_state = models.CharField(max_length=50, choices=State_list, null=True, blank=True)
-    client_postcode = models.CharField(max_length=10, null=True, blank=True)
-    client_message = models.TextField(null=True, blank=True)
+    client_phone = models.CharField(max_length=15)
+    client_state = models.CharField(max_length=50, choices=State_list)
+    client_postcode = models.CharField(max_length=10)
+    client_message = models.TextField(null=True)
     client_business_name = models.CharField(max_length=500, null=True, blank=True)
+    is_client = models.BooleanField(default=False)
     advisor = models.CharField(max_length=500, null=True, blank=True)
     def __str__(self):
         return f"{self.client_first_name} {self.client_last_name}"

@@ -14,6 +14,7 @@ const ContactUs = () => {
         client_business_name: "",
         advisor: "",
         client_message: "",
+        is_client: "",
     });
     const { submitForm, error, loading, success } = useContactUs();
 
@@ -42,6 +43,7 @@ const ContactUs = () => {
                 client_business_name: "",
                 advisor: "",
                 client_message: "",
+                is_client: "",
             });
         }
 
@@ -50,12 +52,18 @@ const ContactUs = () => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData((prevData) => ({
-            ...prevData,
-            [name]: value,
-        }));
-    }
-
+        setFormData((prevData) => {
+            const newData = {
+                ...prevData,
+                [name]: value,
+            };
+            // Clear business name if client_type changes to non-business
+            if (name === "client_type" && value !== "BUS") {
+                newData.client_business_name = "";
+            }
+            return newData;
+        });
+    };
     return (
         <>
             <div className="contact-us-container items-center justify-center flex flex-col">
@@ -113,14 +121,45 @@ const ContactUs = () => {
                         <label htmlFor="client_postcode">Postcode</label>
                         <input id="client_postcode" name="client_postcode" className="border border-black" value={formData.client_postcode} onChange={handleChange} required />
                     </div>
+                    {formData.client_type === "BUS" && (
+                        <div className="form-group space-x-2">
+                            <label htmlFor="client_business_name">Business Name</label>
+                            <input id="client_business_name" name="client_business_name" className="border border-black" value={formData.client_business_name} onChange={handleChange} required />
+                        </div>
+                    )}
                     <div className="form-group space-x-2">
-                        <label htmlFor="client_business_name">Business Name</label>
-                        <input id="client_business_name" name="client_business_name" className="border border-black" value={formData.client_business_name} onChange={handleChange} required />
+                        <label>Are you an existing client?</label>
+                        <div className="flex space-x-4">
+                            <label className="flex items-center">
+                                <input
+                                    type="radio"
+                                    name="is_client"
+                                    value="YES"
+                                    checked={formData.is_client === "YES"}
+                                    onChange={handleChange}
+                                    required
+                                />
+                                <span className="ml-2">Yes</span>
+                            </label>
+                            <label className="flex items-center">
+                                <input
+                                    type="radio"
+                                    name="is_client"
+                                    value="NO"
+                                    checked={formData.is_client === "NO"}
+                                    onChange={handleChange}
+                                    required
+                                />
+                                <span className="ml-2">No</span>
+                            </label>
+                        </div>
                     </div>
-                    <div className="form-group space-x-2">
-                        <label htmlFor="advisor">Advisor</label>
-                        <input id="advisor" name="advisor" className="border border-black" value={formData.advisor} onChange={handleChange} required />
-                    </div>
+                    {formData.is_client === "YES" && (
+                        <div className="form-group space-x-2">
+                            <label htmlFor="client_advisor">Your Advisor</label>
+                            <input id="client_advisor" name="client_advisor" className="border border-black" value={formData.client_advisor} onChange={handleChange} required />
+                        </div>
+                    )}
                     <div className="form-group space-x-2">
                         <label htmlFor="client_message">Message</label>
                         <textarea id="client_message" name="client_message" className="border border-black" value={formData.client_message} onChange={handleChange} required></textarea>
