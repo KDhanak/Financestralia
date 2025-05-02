@@ -12,6 +12,8 @@ services:
       - DEBUG=${DEBUG}
       - SECRET_KEY=${SECRET_KEY}
       - DATABASE_URL=${DATABASE_URL}
+      - ALLOWED_HOSTS=${ALLOWED_HOSTS}
+      - CORS_ORIGIN_ALLOW_ALL=${CORS_ORIGIN_ALLOW_ALL}
 
       
 volumes:
