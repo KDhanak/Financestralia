@@ -22,7 +22,6 @@ export const AdvisorProvider = ({children}) => {
         try {
             const response = await axios.get('https://financestralia.onrender.com/financestralia/advisors');
             setAdvisor(response.data);
-            console.log(response.data);
             return true;
         } catch (error) {
             handleApiError(error, 'An error occurred while fetching advisor');

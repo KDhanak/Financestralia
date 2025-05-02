@@ -1,60 +1,54 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Helmet } from 'react-helmet';
-import { FaArrowUp, FaArrowDown } from "react-icons/fa6";
+import { FaArrowRightLong, FaArrowLeftLong } from "react-icons/fa6";
 import profileImage1 from '../../../public/profile_placeholder_1.jpg';
 import profileImage2 from '../../../public/profile_placeholder_2.jpg';
 import { useAdvisor } from "../../contexts/advisorContext";
 import Loading from "../Loading/Loading";
+import Dropdown from "../ContactUs/Dropdown";
 
 const speciality = ["Select a speciality", "Corporate Finance", "General Finance", "Risk Insurance", "Tax Advisory", "Wealth Management", "Franchising", "Internal Audit", "Consulting", "External Audit", "Accounting", "Digital Consulting", "SMSF Administration and Advisory", "Lending and Finance", "Investment Advice",];
+
+const DEFAULT_SPECIALITY = "Select a speciality";
 
 const Advisors = () => {
     const dropdownRef = useRef(null);
     const [showList, setShowList] = useState(false);
-    const [selected, setSelected] = useState("Select a speciality");
-    const [specialityDropDown, setSpecialityDropDown] = useState(false);
+    const [selected, setSelected] = useState(DEFAULT_SPECIALITY);
     const [name, setName] = useState("");
     const [postcode, setPostcode] = useState("");
     const [filteredData, setFilteredData] = useState([]);
     const { advisor, loading, error } = useAdvisor();
+    const [currentPage, setCurrentPage] = useState(1);
+    const [itemsPerPage] = useState(10);
 
     useEffect(() => {
         setFilteredData(advisor);
     }, [advisor]);
 
-    const handleSpecialityDropDown = () => {
-        setSpecialityDropDown(!specialityDropDown);
-    }
-
     const handleReset = () => {
         setName("");
         setPostcode("");
-        setSelected("Select a specialiity");
-        setFilteredData(data);
+        setSelected(DEFAULT_SPECIALITY);
+        setFilteredData(advisor);
+        setCurrentPage(1);
     }
 
     const filterData = (e) => {
         e.preventDefault();
-        const filtered = data.filter((advisor) => {
-            // Check for each condition
-            const matchesName = name
-                ? advisor.name.toLowerCase().includes(name.toLowerCase())
-                : false;
-            const matchesPostcode = postcode
-                ? advisor.office.includes(postcode)
-                : false;
-            const matchesSpeciality =
-                selected !== "Select a speciality"
-                    ? advisor.speciality === selected
-                    : false;
+        const filtered = advisor.filter((adv) => {
+            const fullName = `${adv.first_name} ${adv.last_name}`.toLowerCase();
+            const matchesName = name ? fullName.includes(name.toLowerCase()) : false;
+            const matchesPostcode = postcode ? adv.office.includes(postcode) : false;
+            const matchesSpeciality = selected !== DEFAULT_SPECIALITY ? adv.speciality === selected : false;
 
-            // Include advisor if any condition matches
             return matchesName || matchesPostcode || matchesSpeciality;
         });
 
-        // If all inputs are empty, show all advisors
-        setFilteredData(filtered.length > 0 || name || postcode || selected !== "Select a speciality" ? filtered : data);
+        setFilteredData(filtered.length > 0 || name || postcode || selected !== DEFAULT_SPECIALITY ? filtered : data);
+        setCurrentPage(1)
     };
+
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -68,6 +62,19 @@ const Advisors = () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
     }, []);
+
+    const paginateData = () => {
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        return filteredData.slice(startIndex, endIndex);
+
+    };
+
+    const handlePageChange = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
+
+    const totalPages = Math.ceil(filteredData.length / itemsPerPage);
 
     if (loading) return <Loading />;
     if (error) return <p>Error: {error}</p>;
@@ -89,31 +96,7 @@ const Advisors = () => {
                         <p className="text-primary_1 font-medium my-3">OR</p>
                         <input className="bg-white h-10 border-2 border-primary_4 focus:border-primary_5 tablet:w-40 laptop:w-56 text-center text-primary_1 outline-none" placeholder="Postcode" value={postcode} onChange={(e) => setPostcode(e.target.value)}></input>
                         <p className="text-primary_1 font-medium my-3">OR</p>
-                        <div className="relative" ref={dropdownRef}>
-                            <div
-                                className="flex items-center justify-between bg-white h-auto border-2 border-primary_4 tablet:w-40 laptop:w-56 text-center text-primary_1 outline-none py-2 px-3 cursor-pointer"
-                                onClick={() => setShowList(!showList)}
-                            >
-                                <span>{selected}</span>
-                                {showList ? <FaArrowUp /> : <FaArrowDown />}
-                            </div>
-                            {showList && (
-                                <ul
-                                    className="absolute bg-white border border-primary_4 w-56 mt-1 z-10 overflow-y-auto max-h-96"
-                                    onClick={handleSpecialityDropDown}
-                                >
-                                    {speciality.map((item, index) => (
-                                        <li
-                                            key={index}
-                                            className="py-2 px-4 hover:bg-primary_5 hover:text-white cursor-pointer"
-                                            onClick={() => { setShowList(false); setSelected(item) }}
-                                        >
-                                            {item}
-                                        </li>
-                                    ))}
-                                </ul>
-                            )}
-                        </div>
+                        <Dropdown selected={selected} setSelected={setSelected} options={speciality} />
                         <button className="border-2 border-primary_1 py-2 px-5 text-primary_3 font-medium bg-primary_2 active:bg-primary_4 active:text-primary_5 active:border-primary_5 ease-in-out duration-150">Find</button>
                     </form>
 
@@ -122,31 +105,7 @@ const Advisors = () => {
                         <p className="text-primary_1 font-medium my-1">OR</p>
                         <input className="bg-white h-10 border-2 border-primary_4 focus:border-primary_5 tablet:w-40 laptop:w-56 text-center text-primary_1 outline-none" placeholder="Postcode" value={postcode} onChange={(e) => setPostcode(e.target.value)}></input>
                         <p className="text-primary_1 font-medium my-1">OR</p>
-                        <div className="relative" ref={dropdownRef}>
-                            <div
-                                className="flex items-center justify-between bg-white h-auto border-2 border-primary_4 tablet:w-40 laptop:w-56 text-center text-primary_1 outline-none py-2 px-3 cursor-pointer"
-                                onClick={() => setShowList(!showList)}
-                            >
-                                <span>{selected}</span>
-                                {showList ? <FaArrowUp /> : <FaArrowDown />}
-                            </div>
-                            {showList && (
-                                <ul
-                                    className="absolute bg-white border border-primary_4 w-56 mt-1 z-10 overflow-y-auto max-h-96"
-                                    onClick={handleSpecialityDropDown}
-                                >
-                                    {speciality.map((item, index) => (
-                                        <li
-                                            key={index}
-                                            className="py-2 px-4 hover:bg-primary_5 hover:text-white cursor-pointer"
-                                            onClick={() => { setShowList(false); setSelected(item) }}
-                                        >
-                                            {item}
-                                        </li>
-                                    ))}
-                                </ul>
-                            )}
-                        </div>
+                        <Dropdown selected={selected} setSelected={setSelected} options={speciality} />
                         <button className="mt-3 border-2 border-primary_1 py-1 px-3 text-primary_3 font-medium bg-primary_2 active:bg-primary_4 active:text-primary_5 active:border-primary_5 ease-in-out duration-150">Find</button>
                     </form>
                 </div>
@@ -154,7 +113,7 @@ const Advisors = () => {
             </div >
             <div className="flex flex-col">
                 <div className="hidden tablet:flex flex-col tablet:mx-[50px] laptop:mx-[100px] lLaptop:mx-[300px] monitor:mx-[500px] 4K:mx-[750px] space-y-5">
-                    {filteredData.map((dataItem, index) => (
+                    {paginateData().map((dataItem, index) => (
                         <div key={index} className="flex bg-primary_3">
                             <div className="w-1/5">
                                 <img className="size-48 p-5" src={(dataItem.gender === "M") ? profileImage1 : profileImage2} />
@@ -211,6 +170,12 @@ const Advisors = () => {
 
                     ))}
                 </div>
+            </div>
+
+            <div className="flex relative justify-center my-5 mx-44">
+                <FaArrowLeftLong className={`${currentPage == 1 ? 'text-primary_1' : 'text-primary_2'} p-2 hover:size-11 cursor-pointer ease-in-out duration-150 size-10 active:text-primary_5`} onClick={() => handlePageChange(currentPage > 1 ? currentPage - 1 : 1)} disabled={currentPage === 1} />
+                <p className="px-4 py-2 text-primary_1" disabled> {currentPage} / {totalPages}</p>
+                <FaArrowRightLong className={`${currentPage == totalPages ? 'text-primary_1' : 'text-primary_2'} p-2 hover:size-11 cursor-pointer ease-in-out duration-150 size-10 active:text-primary_5`} onClick={() => handlePageChange(currentPage < totalPages ? currentPage + 1 : totalPages)} disabled={currentPage === totalPages} />
             </div>
         </>
 

@@ -120,7 +120,7 @@ const Navbar = () => {
 
                 <div className="tablet:hidden contactUs relative sMobile:flex space-x-3 sMobile:left-2 laptop:right-28">
                     <CiLocationOn className="text-3xl text-primary_3 active:text-primary_5 active:border-primary_5 ease-in-out duration-150" />
-                    <MdOutlineContactPhone className="text-3xl text-primary_3 active:bg-primary_4 active:text-primary_5 active:border-primary_5 ease-in-out duration-150" />
+                    <a href="/contact-us"><MdOutlineContactPhone className="text-3xl text-primary_3 active:bg-primary_4 active:text-primary_5 active:border-primary_5 ease-in-out duration-150" /></a>
                 </div>
 
                 <div
