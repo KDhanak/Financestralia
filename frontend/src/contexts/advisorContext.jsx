@@ -1,4 +1,4 @@
-import React, {createContext, useContext, useState, useEffect} from 'react';
+import {createContext, useContext, useState, useEffect} from 'react';
 import axios from 'axios';
 
 const AdvisorContext = createContext();
@@ -20,7 +20,7 @@ export const AdvisorProvider = ({children}) => {
         setLoading(true);
         setError(null);
         try {
-            const response = await axios.get('https://financestralia.onrender.com/financestralia/advisors');
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/financestralia/advisors`);
             setAdvisor(response.data);
             return true;
         } catch (error) {

@@ -26,7 +26,7 @@ export const ContactUsProvider = ({children}) => {
         setError(null);
         console.log('Submitting form data:', formData);
         try {
-            const response = await axios.post('https://financestralia.onrender.com/financestralia/query/', formData);
+            const response = await axios.post(`${import.meta.env.VITE_API_URL}/financestralia/query/`, formData);
             setSuccess(true);
             console.log(response.data);
             return true;
