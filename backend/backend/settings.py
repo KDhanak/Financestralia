@@ -30,6 +30,9 @@ DEBUG = os.getenv('DEBUG')
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
 
 CORS_ALLOWED_ORIGINS = os.getenv('CORS_ALLOWED_ORIGINS')
+CSRF_TRUSTED_ORIGINS = [
+    'https://financestralia-production.up.railway.app',
+]
 if CORS_ALLOWED_ORIGINS:
     CORS_ALLOWED_ORIGINS = CORS_ALLOWED_ORIGINS.split(',')
 else:
